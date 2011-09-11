@@ -1,0 +1,10 @@
+allow to ugly patch the java problems with awesome
+
+USAGE:
+  ./javax name_of_my_java_class
+
+TIPS:
+  thing that don't work:
+    javac Test.java && java Test
+  thing that work:
+    javac Test.java && ./javax Test
