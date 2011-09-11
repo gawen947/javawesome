@@ -14,7 +14,7 @@ public class Test extends JFrame {
     public Test(){
         
         this.setTitle("Test");
-        this.setSize(100, 150);
+        this.setSize(100, 100);
         this.setLocationRelativeTo(null);               
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(new Panneau());
