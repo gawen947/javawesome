@@ -7,7 +7,7 @@ new_num=`expr $num + 1`
 test=`pidof Xephyr`
 if [ $test ]
 then
-    echo "il existe une autre instance de Xephyr (pid=$test)"
+    echo "another instance of Xephyr exists (pid=$test)"
 else
     {(Xephyr -ac ":$new_num" &> /dev/null) &;
       sleep 0.1s;
