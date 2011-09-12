@@ -11,7 +11,7 @@ else
     {(Xephyr -ac ":$new_num" &> /dev/null) &;
       sleep 0.1s;
       export DISPLAY=":$new_num.$screen";
-      (java $1 &> /dev/null) &;
+      (java $* &> /dev/null) &;
       export DISPLAY=":$num.$screen";
     }
 fi
