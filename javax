@@ -1,5 +1,17 @@
 #!/usr/bin/env zsh
 
+# load configuration
+if [ -a ~/.javawesomerc ]
+then
+  source ~/.javasomerc
+fi
+
+# setup configuration
+if [ $SIZE ]
+then
+  screen_arg = "--screen $SCREEN_SIZE"
+fi
+
 num=`echo $DISPLAY | awk -F "" '{print $2}'`
 screen=`echo $DISPLAY | awk -F "" '{print $4}'` 
 new_num=`expr $num + 1`
@@ -8,10 +20,18 @@ if [ $test ]
 then
     echo "another instance of Xephyr exists (pid=$test)"
 else
-    {(Xephyr -ac ":$new_num" &> /dev/null) &;
+    {(Xephyr -ac ":$new_num" -reset -terminate &> /dev/null) &;
+      xpid=$!
       sleep 0.1s;
       export DISPLAY=":$new_num.$screen";
+
+      if [ $WM ]
+      then
+        $WM &
+      fi
+
       java $*
       export DISPLAY=":$num.$screen";
+      wait $xpid
     }
 fi
