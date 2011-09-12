@@ -15,12 +15,10 @@ if [ $SIZE ]
 then
   screen_arg="-screen"
 fi
-
 num=`echo $DISPLAY | awk -F "" '{print $2}'`
 screen=`echo $DISPLAY | awk -F "" '{print $4}'` 
 new_num=`expr $num + 1`
-test=`pidof Xephyr`
-if [ $test ]
+if [ `pidof Xephyr`]
 then
     echo "another instance of Xephyr exists (pid=$test)"
 else
@@ -33,8 +31,12 @@ else
       then
         $WM &
       fi
-
-      java $*
+	  if [[ $1 == "-p" ]]
+	  then
+		  $2
+	  else
+		  java $*
+	  fi
       export DISPLAY=":$num.$screen";
       wait $xpid
     }
