@@ -1,8 +1,11 @@
 INSTALL  = install -m 555
 RM       = rm
+ECHO     = echo
 JAVAC    = javac
 PREFIX  ?= /usr/local
 BINDIR  ?= $(PREFIX)/bin
+
+commit = $(shell ./hash.sh)
 
 .PHONY: all clean
 
@@ -19,3 +22,7 @@ clean:
 
 install:
 	$(INSTALL) javax $(DESTDIR)$(BINDIR)
+
+ 	# stamp installed file with commit hash
+	$(ECHO) ""                      >> $(DESTDIR)$(BINDIR)/javax
+	$(ECHO) "# (commit: $(commit))" >> $(DESTDIR)$(BINDIR)/javax
