@@ -1,7 +1,11 @@
 #!/usr/bin/env zsh
 
+# default option
+SIZE=""
+WM=""
+
 # load configuration
-if [ -a ~/.javawesomerc ]
+if [ -e ~/.javawesomerc ]
 then
   source ~/.javasomerc
 fi
