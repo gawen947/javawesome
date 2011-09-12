@@ -9,7 +9,7 @@ commit = $(shell ./hash.sh)
 
 .PHONY: all clean
 
-all: Test
+all:
 
 Test: 
 	$(JAVAC) Test.java
@@ -18,7 +18,7 @@ run-test: Test
 	./javax Test
 
 clean:
-	$(RM) *.class
+	$(RM) -f *.class
 
 install:
 	$(INSTALL) javax $(DESTDIR)$(BINDIR)
