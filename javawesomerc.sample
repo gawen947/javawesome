@@ -1,0 +1,6 @@
+# Xephyr instance size
+SIZE="800x600"
+
+# A command to be run before running the java code.
+# This can be for example a window manager.
+WM="/usr/bin/wmaker"
