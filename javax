@@ -7,13 +7,13 @@ WM=""
 # load configuration
 if [ -e ~/.javawesomerc ]
 then
-  source ~/.javasomerc
+  source ~/.javawesomerc
 fi
 
 # setup configuration
 if [ $SIZE ]
 then
-  screen_arg = "--screen $SCREEN_SIZE"
+  screen_arg="-screen"
 fi
 
 num=`echo $DISPLAY | awk -F "" '{print $2}'`
@@ -24,7 +24,7 @@ if [ $test ]
 then
     echo "another instance of Xephyr exists (pid=$test)"
 else
-    {(Xephyr -ac ":$new_num" -reset -terminate &> /dev/null) &;
+    {(Xephyr -ac ":$new_num" $screen_arg $SIZE -reset -terminate &> /dev/null) &;
       xpid=$!
       sleep 0.1s;
       export DISPLAY=":$new_num.$screen";
