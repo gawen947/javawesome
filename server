@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+source ~/.javawesomerc
+
+screen_arg="-screen"
+
+num=`echo $DISPLAY | awk -F "" '{print $2}'`
+screen=`echo $DISPLAY | awk -F "" '{print $4}'` 
+new_num=`expr $num + 1`
+pids=`pidof Xephyr`
+
+if [ $pids ]
+then
+	echo "Xephyr is already running (pids: $pids)";
+else
+	{
+	(Xephyr -ac ":$new_num" $screen_arg $SIZE -reset -terminate &> /dev/null) &;
+	export DISPLAY=":$new_num.$screen";
+	sleep 0.2 && $WM &;
+	export DISPLAY=":$num.$screen";
+	}
+fi
