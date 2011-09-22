@@ -18,8 +18,13 @@ then
 else
 	{
 	(Xephyr -ac ":$new_num" $screen_arg $SIZE -reset -terminate &> /dev/null) &;
+	xmodmap -pke > ~/.xephyr_kb;
 	export DISPLAY=":$new_num.$screen";
-	sleep 0.2 && $WM &> /dev/null; 
+	sleep 0.2;
+	$WM &;
+	wpid=$!
+	xterm -ls -e "xmodmap ~/.xephyr_kb";	
 	export DISPLAY=":$num.$screen";
+	wait $wpid
 	}
 fi
