@@ -19,7 +19,7 @@ else
 	{
 	(Xephyr -ac ":$new_num" $screen_arg $SIZE -reset -terminate &> /dev/null) &;
 	export DISPLAY=":$new_num.$screen";
-	sleep 0.2 && $WM &> /dev/null; 
+  sleep 0.2; $WM;
 	export DISPLAY=":$num.$screen";
 	}
 fi
