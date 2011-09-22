@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 
-source ~/.javawesomerc
+if [ -e ~/.javawesomerc ]
+then
+	source ~/.javawesomerc
+fi
 
 screen_arg="-screen"
 
@@ -16,7 +19,7 @@ else
 	{
 	(Xephyr -ac ":$new_num" $screen_arg $SIZE -reset -terminate &> /dev/null) &;
 	export DISPLAY=":$new_num.$screen";
-	sleep 0.2 && $WM &;
+	(sleep 0.2 && $WM &> /dev/null) &;
 	export DISPLAY=":$num.$screen";
 	}
 fi
