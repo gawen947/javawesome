@@ -2,6 +2,7 @@ INSTALL  = install -m 555
 RM       = rm
 ECHO     = echo
 JAVAC    = javac
+JAVA	 = java
 PREFIX  ?= /usr/local
 BINDIR  ?= $(PREFIX)/bin
 
@@ -15,7 +16,7 @@ Test:
 	$(JAVAC) Test.java
 
 run-test: Test
-	./javax Test
+	./wm_server & sleep 0.2 && ./wm_add "java Test"
 
 clean:
 	$(RM) -f *.class

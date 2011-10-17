@@ -14,7 +14,8 @@ if [ $pids ]
 then
 	{
 	export DISPLAY=":$new_num.$screen";
-	$1 &;
+  echo "$DISPLAY"
+	$1;
 	export DISPLAY=":$num.$screen";
 
 	}
