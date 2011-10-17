@@ -22,7 +22,7 @@ else
 	export DISPLAY=":$new_num.$screen";
 	sleep 0.2;
 	$WM &;
-	wpid=$!
+	wpid=$!;
 	xterm -ls -e "xmodmap ~/.xephyr_kb";	
 	export DISPLAY=":$num.$screen";
 	wait $wpid
